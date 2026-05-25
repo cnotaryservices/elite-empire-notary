@@ -52,15 +52,21 @@
       <p class="eyebrow" data-i18n="offerModalEyebrow">First-Time Client Offer</p>
       <h2 id="offer-modal-heading" data-i18n="offerModalHeading">Enter your email to receive 10% off.</h2>
       <p data-i18n="offerModalCopy">Submit your email and Elite Empire Notary LLC will follow up with your discount details.</p>
-      <form class="offer-lead-form" action="https://formsubmit.co/c.notaryservices@outlook.com" method="POST">
+      <form class="offer-lead-form" action="https://formspree.io/f/mredaodr" method="POST">
         <input type="hidden" name="_subject" value="10% Discount Email Signup" />
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_captcha" value="false" />
-        <input id="offer-next-url" type="hidden" name="_next" value="thank-you.html" />
+        <input type="hidden" name="name" value="First-time discount lead" />
+        <input type="hidden" name="phone" value="Not provided" />
+        <input type="hidden" name="service" value="First-Time Client Offer" />
+        <input type="hidden" name="message" value="Please follow up with discount details." />
         <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="form-honey" />
         <label for="offer-email" data-i18n="offerEmailLabel">Email Address</label>
         <input id="offer-email" name="email" type="email" autocomplete="email" data-i18n-placeholder="offerEmailPlaceholder" placeholder="you@example.com" required />
+        <label class="consent-field" for="offer-consent">
+          <input id="offer-consent" name="consent" type="checkbox" value="Agreed" required />
+          <span data-i18n="policyConsent">By submitting this form, you agree to be contacted by Elite Empire Notary regarding your request.</span>
+        </label>
         <button class="btn btn-primary btn-full" type="submit" data-i18n="offerSubmit">Send My Discount</button>
+        <p class="form-status" data-form-status role="status" aria-live="polite"></p>
       </form>
     </section>
   </div>
@@ -350,7 +356,7 @@
             </li>
             <li>
               <strong data-i18n="emailLabel">Email</strong>
-              <a href="mailto:c.notaryservices@outlook.com">c.notaryservices@outlook.com</a>
+              <a href="mailto:cindy.velasco@eliteempirenotary.com">cindy.velasco@eliteempirenotary.com</a>
             </li>
             <li>
               <strong data-i18n="serviceAreaLabel">Service Area</strong>
@@ -359,11 +365,8 @@
           </ul>
         </div>
 
-        <form class="contact-form" action="https://formsubmit.co/c.notaryservices@outlook.com" method="POST">
+        <form class="contact-form" action="https://formspree.io/f/mredaodr" method="POST">
           <input type="hidden" name="_subject" value="New Notary Service Request" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input id="form-next-url" type="hidden" name="_next" value="thank-you.html" />
           <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="form-honey" />
 
           <div class="form-field">
@@ -403,11 +406,12 @@
           </div>
 
           <label class="consent-field" for="policy-consent">
-            <input id="policy-consent" name="policy_consent" type="checkbox" value="Agreed" required />
-            <span data-i18n="policyConsent">I agree to the Privacy Policy, Terms of Service, SMS/Text Policy, and Cancellation/Refund Policy.</span>
+            <input id="policy-consent" name="consent" type="checkbox" value="Agreed" required />
+            <span data-i18n="policyConsent">By submitting this form, you agree to be contacted by Elite Empire Notary regarding your request.</span>
           </label>
 
           <button class="btn btn-primary btn-full" type="submit" data-i18n="formSubmit">Send Message</button>
+          <p class="form-status" data-form-status role="status" aria-live="polite"></p>
           <p class="form-note" data-i18n="formNote">Your request will be sent securely by email.</p>
         </form>
       </div>

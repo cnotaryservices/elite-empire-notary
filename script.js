@@ -4,16 +4,16 @@ const offerSection = document.querySelector('.offer-section');
 const nav = document.querySelector('.nav');
 const langToggle = document.querySelector('.lang-toggle');
 const contactForm = document.querySelector('.contact-form');
-const formNextUrl = document.querySelector('#form-next-url');
 const offerModal = document.querySelector('#offer-modal');
 const offerTriggers = document.querySelectorAll('.offer-trigger');
 const offerCloseControls = document.querySelectorAll('[data-offer-close]');
 const offerLeadForm = document.querySelector('.offer-lead-form');
-const offerNextUrl = document.querySelector('#offer-next-url');
 const offerEmailInput = document.querySelector('#offer-email');
 const phoneInput = document.querySelector('#phone');
 const faqItems = document.querySelectorAll('[data-faq-item]');
 const revealItems = document.querySelectorAll('[data-reveal]');
+const formspreeSuccessMessage = 'Thank you! Your request has been received. Elite Empire Notary will contact you soon.';
+const formspreeErrorMessage = 'Something went wrong. Please try again or contact us directly.';
 
 const translations = {
   en: {
@@ -87,9 +87,11 @@ const translations = {
     formService: 'Service Needed',
     serviceOptionDefault: 'Select a service',
     formMessage: 'Message',
-    policyConsent: 'I agree to the Privacy Policy, Terms of Service, SMS/Text Policy, and Cancellation/Refund Policy.',
+    policyConsent: 'By submitting this form, you agree to be contacted by Elite Empire Notary regarding your request.',
     formSubmit: 'Send Message',
     formNote: 'Your request will be sent securely by email.',
+    formSuccess: formspreeSuccessMessage,
+    formError: formspreeErrorMessage,
     footerCopy: '© 2026 Elite Empire Notary LLC. Notary services in Catawba County and surrounding areas.',
     privacyPolicyLink: 'Privacy Policy',
     termsLink: 'Terms of Service',
@@ -205,9 +207,11 @@ const translations = {
     formService: 'Servicio necesario',
     serviceOptionDefault: 'Seleccione un servicio',
     formMessage: 'Mensaje',
-    policyConsent: 'Acepto la Politica de Privacidad, los Terminos de Servicio, la Politica de SMS/Textos y la Politica de Cancelacion/Reembolso.',
+    policyConsent: 'By submitting this form, you agree to be contacted by Elite Empire Notary regarding your request.',
     formSubmit: 'Enviar mensaje',
     formNote: 'Su solicitud se enviará de forma segura por correo electrónico.',
+    formSuccess: formspreeSuccessMessage,
+    formError: formspreeErrorMessage,
     footerCopy: '© 2026 Elite Empire Notary LLC. Servicios notariales en el condado de Catawba y areas cercanas.',
     privacyPolicyLink: 'Politica de Privacidad',
     termsLink: 'Terminos de Servicio',
@@ -422,47 +426,80 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-const setFormRedirectUrl = () => {
-  if (!formNextUrl) {
+const setFormStatus = (form, message = '', type = '') => {
+  const status = form.querySelector('[data-form-status]');
+
+  if (!status) {
     return;
   }
 
-  const thankYouPath = new URL('thank-you.html', window.location.href);
-  formNextUrl.value = thankYouPath.href;
+  status.textContent = message;
+  status.classList.remove('is-success', 'is-error');
+
+  if (type) {
+    status.classList.add(`is-${type}`);
+  }
 };
 
-const setOfferRedirectUrl = () => {
-  if (!offerNextUrl) {
-    return;
+const submitFormspreeForm = async (form) => {
+  const submitButton = form.querySelector('button[type="submit"]');
+  const originalButtonText = submitButton?.textContent;
+
+  setFormStatus(form);
+  submitButton?.setAttribute('disabled', '');
+
+  if (submitButton) {
+    submitButton.textContent = 'Sending...';
   }
 
-  const thankYouPath = new URL('thank-you.html', window.location.href);
-  offerNextUrl.value = thankYouPath.href;
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: {
+        Accept: 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Formspree submission failed.');
+    }
+
+    form.reset();
+    setFormStatus(form, translations[currentLanguage].formSuccess, 'success');
+  } catch (error) {
+    setFormStatus(form, translations[currentLanguage].formError, 'error');
+  } finally {
+    submitButton?.removeAttribute('disabled');
+
+    if (submitButton && originalButtonText) {
+      submitButton.textContent = originalButtonText;
+    }
+  }
 };
 
 contactForm?.addEventListener('submit', (event) => {
+  event.preventDefault();
   validatePhone();
 
   if (!contactForm.checkValidity()) {
-    event.preventDefault();
     contactForm.reportValidity();
     return;
   }
 
-  setFormRedirectUrl();
+  submitFormspreeForm(contactForm);
 });
 
 offerLeadForm?.addEventListener('submit', (event) => {
+  event.preventDefault();
+
   if (!offerLeadForm.checkValidity()) {
-    event.preventDefault();
     offerLeadForm.reportValidity();
     return;
   }
 
-  setOfferRedirectUrl();
+  submitFormspreeForm(offerLeadForm);
 });
 
-setFormRedirectUrl();
-setOfferRedirectUrl();
 setLanguage(currentLanguage);
 openOfferModal();
