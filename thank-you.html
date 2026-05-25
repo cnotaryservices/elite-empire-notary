@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Thank you for contacting Elite Empire Notary LLC."
+  />
+  <title>Thank You | Elite Empire Notary LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Elite Empire Notary LLC home">
+        <span class="brand-mark" aria-hidden="true">CV</span>
+        <span class="brand-copy">
+          <span class="brand-name" data-i18n="brandName">Elite Empire Notary LLC</span>
+          <span class="brand-tagline" data-i18n="brandTagline">Notary Services</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html#about" data-i18n="navAbout">About</a>
+        <a href="index.html#services" data-i18n="navServices">Services</a>
+        <a href="index.html#why" data-i18n="navWhy">Why Us</a>
+        <a href="faq.html" data-i18n="navFAQ">Q&amp;A</a>
+        <a href="index.html#booking" data-i18n="navBooking">Book</a>
+        <a href="index.html#payment" data-i18n="navPayment">Pay</a>
+        <a href="index.html#contact" data-i18n="navContact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="lang-toggle" type="button" aria-label="Switch language to Spanish">ES</button>
+        <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="thank-you-section section">
+      <div class="container narrow-container thank-you-card">
+        <p class="eyebrow" data-i18n="brandName">Elite Empire Notary LLC</p>
+        <h1 data-i18n="thankYouHeading">Thank You for Reaching Out</h1>
+        <p data-i18n="thankYouMessage">
+          Your information has been received. A member of our team will be in touch with you soon to discuss your notary service request.
+        </p>
+        <p data-i18n="thankYouSecondary">
+          We appreciate the opportunity to assist you with reliable and professional notary services.
+        </p>
+        <a class="btn btn-primary" href="index.html" data-i18n="backHome">Return to Home</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p data-i18n="footerCopy">&copy; 2026 Elite Empire Notary LLC. Notary services in Catawba County and surrounding areas.</p>
+      <nav class="footer-links" aria-label="Legal policies">
+        <a href="privacy-policy.html" data-i18n="privacyPolicyLink">Privacy Policy</a>
+        <a href="terms-of-service.html" data-i18n="termsLink">Terms of Service</a>
+        <a href="cookie-policy.html" data-i18n="cookiePolicyLink">Cookie Policy</a>
+        <a href="sms-text-policy.html" data-i18n="smsPolicyLink">SMS/Text Policy</a>
+        <a href="legal-disclaimer.html" data-i18n="legalDisclaimerLink">Legal Disclaimer</a>
+        <a href="cancellation-refund-policy.html" data-i18n="refundPolicyLink">Cancellation/Refund Policy</a>
+      </nav>
+      <img class="ncna-logo" src="NCNA LOGO.png" alt="NCNA logo" />
+    </div>
+  </footer>
+
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <script>
+    window.addEventListener('load', () => {
+      Calendly.initBadgeWidget({
+        url: 'https://calendly.com/c-notaryservices/notary-appointment',
+        text: 'Schedule time with me',
+        color: '#0069ff',
+        textColor: '#ffffff',
+        branding: true,
+      });
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
