@@ -544,6 +544,14 @@ offerLeadForm?.addEventListener('submit', (event) => {
 });
 
 const apostilleForm = document.querySelector('.apostille-form');
+if (apostilleForm) {
+  const country = new URLSearchParams(window.location.search).get('country');
+  const destinationInput = apostilleForm.querySelector('#apostille-destination');
+  if (country && destinationInput) {
+    destinationInput.value = country.trim().slice(0, 200);
+  }
+}
+
 apostilleForm?.addEventListener('submit', (event) => {
   event.preventDefault();
   if (!apostilleForm.checkValidity()) {
