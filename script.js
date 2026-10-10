@@ -3,7 +3,7 @@ const siteHeader = document.querySelector('.site-header');
 const offerSection = document.querySelector('.offer-section');
 const nav = document.querySelector('.nav');
 const langToggle = document.querySelector('.lang-toggle');
-const contactForm = document.querySelector('.contact-form');
+const contactForm = document.querySelector('.contact-form:not(.apostille-form)');
 const offerModal = document.querySelector('#offer-modal');
 const offerTriggers = document.querySelectorAll('.offer-trigger');
 const offerCloseControls = document.querySelectorAll('[data-offer-close]');
@@ -17,6 +17,26 @@ const formspreeErrorMessage = 'Something went wrong. Please try again or contact
 
 const translations = {
   en: {
+    apostilleSelect: "Select an option",
+    apostilleHeading: "Request apostille services.",
+    apostilleCopy: "Tell us about your documents so we can confirm the next steps, timing, and pricing.",
+    apostilleType: "Document type(s)",
+    apostilleCount: "Number of documents",
+    apostilleOrigin: "Issuing state / country",
+    apostilleDestination: "Country where documents will be used",
+    apostilleNotarized: "Are the documents already notarized?",
+    apostilleYes: "Yes",
+    apostilleNo: "No",
+    apostilleUnsure: "Not sure",
+    apostilleDeadline: "Date needed (optional)",
+    apostilleDelivery: "Preferred document handoff",
+    apostilleMeet: "Local appointment",
+    apostilleMail: "Mail / courier",
+    apostilleDiscuss: "Discuss with me",
+    apostilleNotes: "Additional details (optional)",
+    apostilleSubmit: "Send Apostille Request",
+    apostilleNote: "This is a service inquiry. We will contact you to confirm requirements and availability.",
+
     brandName: 'Elite Empire Notary LLC',
     brandTagline: 'Notary Services',
     navServices: 'Services',
@@ -138,6 +158,26 @@ const translations = {
     thankYouSecondary: 'We appreciate the opportunity to assist you with reliable and professional notary services.',
   },
   es: {
+    apostilleSelect: "Seleccione una opción",
+    apostilleHeading: "Solicite servicios de apostilla.",
+    apostilleCopy: "Cuéntenos sobre sus documentos para confirmar los próximos pasos, los plazos y el precio.",
+    apostilleType: "Tipo(s) de documento",
+    apostilleCount: "Número de documentos",
+    apostilleOrigin: "Estado / país de emisión",
+    apostilleDestination: "País donde se utilizarán los documentos",
+    apostilleNotarized: "¿Los documentos ya están notarizados?",
+    apostilleYes: "Sí",
+    apostilleNo: "No",
+    apostilleUnsure: "No estoy seguro/a",
+    apostilleDeadline: "Fecha necesaria (opcional)",
+    apostilleDelivery: "Entrega preferida de documentos",
+    apostilleMeet: "Cita local",
+    apostilleMail: "Correo / mensajería",
+    apostilleDiscuss: "Consultar conmigo",
+    apostilleNotes: "Detalles adicionales (opcional)",
+    apostilleSubmit: "Enviar solicitud de apostilla",
+    apostilleNote: "Esta es una consulta de servicio. Le contactaremos para confirmar los requisitos y la disponibilidad.",
+
     brandName: 'Elite Empire Notary LLC',
     brandTagline: 'Servicios notariales',
     navServices: 'Servicios',
@@ -501,6 +541,16 @@ offerLeadForm?.addEventListener('submit', (event) => {
   }
 
   submitFormspreeForm(offerLeadForm);
+});
+
+const apostilleForm = document.querySelector('.apostille-form');
+apostilleForm?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  if (!apostilleForm.checkValidity()) {
+    apostilleForm.reportValidity();
+    return;
+  }
+  submitFormspreeForm(apostilleForm);
 });
 
 setLanguage(currentLanguage);
