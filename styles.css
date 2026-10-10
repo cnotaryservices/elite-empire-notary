@@ -1619,6 +1619,27 @@ button:disabled {
   text-decoration: underline;
 }
 
+.footer-badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.footer-badges .ncna-logo,
+.nna-badge {
+  min-width: 0;
+  width: min(170px, calc((100% - 1.5rem) / 2));
+  flex: 0 1 170px;
+}
+
+.nna-badge img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .ncna-logo {
   width: min(422px, 82vw);
   max-height: 170px;
