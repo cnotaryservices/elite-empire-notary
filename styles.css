@@ -1786,3 +1786,40 @@ button:disabled {
     font-size: 2.45rem;
   }
 }
+
+/* Translation affiliate section */
+.translation-section {
+  border-top: 1px solid var(--gray-strong);
+  background: linear-gradient(135deg, var(--blue-pale), var(--white) 70%);
+}
+
+.translation-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.translation-copy h2 { margin-bottom: 1rem; }
+.translation-copy p:not(.eyebrow) { color: var(--muted); }
+.translation-copy .translation-intro {
+  color: var(--navy);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.translation-link { gap: 0.65rem; margin-top: 0.5rem; }
+.translation-copy .translation-note { margin-top: 1rem; font-size: 0.85rem; }
+.translation-image-link {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--gray-strong);
+  border-radius: 16px;
+  background: var(--navy);
+  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.12);
+}
+.translation-image-link img { display: block; width: 100%; height: auto; }
+.translation-image-link[href]:hover { outline: 2px solid var(--royal); outline-offset: 4px; }
+@media (max-width: 760px) {
+  .translation-grid { grid-template-columns: 1fr; }
+  .translation-link { width: 100%; text-align: center; }
+}

@@ -17,6 +17,12 @@ const formspreeErrorMessage = 'Something went wrong. Please try again or contact
 
 const translations = {
   en: {
+    translationEyebrow: 'Our Affiliate Partner',
+    translationHeading: 'Translation Services',
+    translationIntro: 'We are now an affiliate of Idiomatic Language Services.',
+    translationCopy: 'Need your documents translated? Connect with Idiomatic Language Services through our affiliate link to get started.',
+    translationCta: 'Click here',
+    translationNote: 'Translation services are provided by Idiomatic Language Services.',
     apostilleSelect: "Select an option",
     apostilleHeading: "Request apostille services.",
     apostilleCopy: "Tell us about your documents so we can confirm the next steps, timing, and pricing.",
@@ -158,6 +164,12 @@ const translations = {
     thankYouSecondary: 'We appreciate the opportunity to assist you with reliable and professional notary services.',
   },
   es: {
+    translationEyebrow: 'Nuestro socio afiliado',
+    translationHeading: 'Servicios de traducción',
+    translationIntro: 'Ahora somos afiliados de Idiomatic Language Services.',
+    translationCopy: '¿Necesita traducir sus documentos? Visite Idiomatic Language Services a través de nuestro enlace de afiliado para comenzar.',
+    translationCta: 'Haga clic aquí',
+    translationNote: 'Los servicios de traducción son proporcionados por Idiomatic Language Services.',
     apostilleSelect: "Seleccione una opción",
     apostilleHeading: "Solicite servicios de apostilla.",
     apostilleCopy: "Cuéntenos sobre sus documentos para confirmar los próximos pasos, los plazos y el precio.",
