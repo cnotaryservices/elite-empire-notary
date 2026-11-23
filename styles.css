@@ -1295,15 +1295,10 @@ h3 {
   padding: clamp(1.15rem, 3vw, 1.75rem);
 }
 
-.payment-panel {
+.invoice-panel {
   justify-items: center;
   padding: clamp(1.5rem, 4vw, 2rem);
   background: var(--gray);
-}
-
-.paypal-hosted-button {
-  width: min(100%, 420px);
-  min-height: 48px;
 }
 
 .embed-placeholder {
@@ -1359,6 +1354,14 @@ h3 {
   gap: 1rem;
   padding: clamp(1.15rem, 3vw, 1.75rem);
   animation: fadeSlideUp 620ms ease both;
+}
+
+#service-request {
+  min-width: 0;
+}
+
+#preferred-appointment {
+  min-width: 0;
 }
 
 .form-honey {

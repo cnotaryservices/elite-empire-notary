@@ -3,7 +3,7 @@ const siteHeader = document.querySelector('.site-header');
 const offerSection = document.querySelector('.offer-section');
 const nav = document.querySelector('.nav');
 const langToggle = document.querySelector('.lang-toggle');
-const contactForm = document.querySelector('.contact-form:not(.apostille-form)');
+const contactForm = document.querySelector('#service-request');
 const offerModal = document.querySelector('#offer-modal');
 const offerTriggers = document.querySelectorAll('.offer-trigger');
 const offerCloseControls = document.querySelectorAll('[data-offer-close]');
@@ -90,13 +90,12 @@ const translations = {
     navServices: 'Services',
     navWhy: 'Why Us',
     navFAQ: 'Q&A',
-    navPayment: 'Pay',
+    requestService: 'Request a Service',
     navContact: 'Contact',
     heroEyebrow: 'Catawba County Notary Services',
     heroHeading: 'Notary Services Done Right',
     heroCopy: 'Fast. Reliable. Mobile. Trusted across Catawba County and surrounding areas.',
     heroCta: 'Book Now',
-    payNow: 'Pay Now',
     credentialCertified: 'Licensed and certified notary professional',
     credentialMobile: 'Mobile notary service - we come to you',
     credentialSameDay: 'Same-day appointments may be available',
@@ -141,9 +140,8 @@ const translations = {
     whyTrusted: 'Trusted notary service business',
     whyBilingual: 'Bilingual-friendly experience',
     reviewsHeading: 'Google Reviews',
-    paymentEyebrow: 'Payment',
-    paymentHeading: 'Secure Payment',
-    paymentCopy: 'Pay for your notary services safely and securely using PayPal or Venmo.',
+    invoiceHeading: 'Simple, Secure Invoicing',
+    invoiceCopy: 'Submit your service request. We’ll confirm your service details and total, including any applicable travel fees, then email you a QuickBooks invoice with payment instructions.',
     contactEyebrow: 'Contact',
     contactHeading: 'Request notary service.',
     contactCopy: 'Share a few details and Elite Empire Notary LLC will follow up to confirm timing, location, and service needs.',
@@ -155,10 +153,25 @@ const translations = {
     formPhone: 'Phone Number',
     formService: 'Service Needed',
     serviceOptionDefault: 'Select a service',
-    formMessage: 'Message',
+    formFullName: 'Full Name',
+    formEmailAddress: 'Email Address',
+    formPreferredAppointment: 'Preferred Appointment Date and Time (subject to confirmation)',
+    formLocation: 'Service Location or City',
+    formMessage: 'Additional Details (optional)',
+    serviceGeneral: 'General Notary Services',
+    serviceMobile: 'Mobile Notary Services',
+    serviceRealEstate: 'Real Estate & Loan Signing Services',
+    serviceLegal: 'Legal & Estate Planning Documents',
+    serviceBusiness: 'Business & Financial Documents',
+    serviceFamily: 'Family & Personal Documents',
+    serviceApostille: 'Apostille & Authentication Services',
+    serviceSpecialty: 'Specialty / Premium Services',
     policyConsent: 'By submitting this form, you agree to be contacted by Elite Empire Notary regarding your request.',
-    formSubmit: 'Send Message',
-    formNote: 'Your request will be sent securely by email.',
+    formSubmit: 'Submit Service Request',
+    requestSending: 'Submitting…',
+    formNote: 'Submitting a request does not confirm an appointment. Service details, pricing, and availability will be confirmed before an invoice is sent.',
+    requestSuccess: 'Thank you! Your service request has been received. We’ll contact you to confirm availability, service details, and pricing. Once confirmed, you’ll receive a QuickBooks invoice by email.',
+    requestError: 'We couldn’t submit your service request. Please try again or contact us directly.',
     formSuccess: formspreeSuccessMessage,
     formError: formspreeErrorMessage,
     footerCopy: '© 2026 Elite Empire Notary LLC. Notary services in Catawba County and surrounding areas.',
@@ -168,12 +181,11 @@ const translations = {
     smsPolicyLink: 'SMS/Text Policy',
     legalDisclaimerLink: 'Legal Disclaimer',
     refundPolicyLink: 'Cancellation/Refund Policy',
-    namePlaceholder: 'Your name',
+    namePlaceholder: 'Your full name',
     emailPlaceholder: 'you@example.com',
     phonePlaceholder: '(123) 456-7890',
     phoneRequired: 'Please enter your phone number.',
     phoneIncomplete: 'Please enter a complete 10-digit phone number.',
-    messagePlaceholder: 'Tell us about your document, location, and preferred appointment time.',
     thankYou: 'Thank you. Elite Empire Notary LLC will follow up soon to confirm your request.',
     languageLabel: 'Switch language to Spanish',
     faqEyebrow: 'Q&A',
@@ -279,13 +291,12 @@ const translations = {
     navServices: 'Servicios',
     navWhy: 'Por qué elegirnos',
     navFAQ: 'Preguntas',
-    navPayment: 'Pagar',
+    requestService: 'Solicitar un servicio',
     navContact: 'Contacto',
     heroEyebrow: 'Servicios notariales en el condado de Catawba',
     heroHeading: 'Servicios notariales bien hechos',
     heroCopy: 'Rapido. Confiable. Movil. De confianza en el condado de Catawba y areas cercanas.',
     heroCta: 'Reservar ahora',
-    payNow: 'Pagar ahora',
     credentialCertified: 'Profesional notarial con licencia y certificación',
     credentialMobile: 'Servicio notarial móvil - vamos a usted',
     credentialSameDay: 'Puede haber citas disponibles el mismo día',
@@ -330,9 +341,8 @@ const translations = {
     whyTrusted: 'Negocio de servicios notariales de confianza',
     whyBilingual: 'Experiencia amigable para personas bilingües',
     reviewsHeading: 'Reseñas de Google',
-    paymentEyebrow: 'Pago',
-    paymentHeading: 'Pago seguro',
-    paymentCopy: 'Pague sus servicios notariales de forma segura usando PayPal o Venmo.',
+    invoiceHeading: 'Facturación sencilla y segura',
+    invoiceCopy: 'Envíe su solicitud de servicio. Confirmaremos los detalles del servicio y el precio total, incluidos los cargos de desplazamiento que correspondan. Luego le enviaremos por correo electrónico una factura de QuickBooks con las instrucciones de pago.',
     contactEyebrow: 'Contacto',
     contactHeading: 'Solicite servicio notarial.',
     contactCopy: 'Comparta algunos detalles y Elite Empire Notary LLC le contactará para confirmar horario, ubicación y servicio.',
@@ -344,10 +354,25 @@ const translations = {
     formPhone: 'Número de teléfono',
     formService: 'Servicio necesario',
     serviceOptionDefault: 'Seleccione un servicio',
-    formMessage: 'Mensaje',
-    policyConsent: 'By submitting this form, you agree to be contacted by Elite Empire Notary regarding your request.',
-    formSubmit: 'Enviar mensaje',
-    formNote: 'Su solicitud se enviará de forma segura por correo electrónico.',
+    formFullName: 'Nombre completo',
+    formEmailAddress: 'Correo electrónico',
+    formPreferredAppointment: 'Fecha y hora preferidas para la cita (sujetas a confirmación)',
+    formLocation: 'Lugar o ciudad del servicio',
+    formMessage: 'Detalles adicionales (opcional)',
+    serviceGeneral: 'Servicios notariales generales',
+    serviceMobile: 'Servicios notariales móviles',
+    serviceRealEstate: 'Servicios de firma para bienes raíces y préstamos',
+    serviceLegal: 'Documentos legales y de planificación patrimonial',
+    serviceBusiness: 'Documentos comerciales y financieros',
+    serviceFamily: 'Documentos familiares y personales',
+    serviceApostille: 'Servicios de apostilla y autenticación',
+    serviceSpecialty: 'Servicios especializados o prémium',
+    policyConsent: 'Al enviar este formulario, acepta que Elite Empire Notary se comunique con usted sobre su solicitud.',
+    formSubmit: 'Enviar solicitud de servicio',
+    requestSending: 'Enviando…',
+    formNote: 'Enviar una solicitud no confirma una cita. Confirmaremos los detalles del servicio, el precio y la disponibilidad antes de enviarle una factura.',
+    requestSuccess: '¡Gracias! Hemos recibido su solicitud de servicio. Nos comunicaremos con usted para confirmar la disponibilidad, los detalles del servicio y el precio. Una vez confirmados, recibirá una factura de QuickBooks por correo electrónico.',
+    requestError: 'No pudimos enviar su solicitud de servicio. Vuelva a intentarlo o comuníquese directamente con nosotros.',
     formSuccess: formspreeSuccessMessage,
     formError: formspreeErrorMessage,
     footerCopy: '© 2026 Elite Empire Notary LLC. Servicios notariales en el condado de Catawba y areas cercanas.',
@@ -357,12 +382,11 @@ const translations = {
     smsPolicyLink: 'Politica de SMS/Textos',
     legalDisclaimerLink: 'Aviso Legal',
     refundPolicyLink: 'Cancelacion/Reembolso',
-    namePlaceholder: 'Su nombre',
+    namePlaceholder: 'Su nombre completo',
     emailPlaceholder: 'usted@ejemplo.com',
     phonePlaceholder: '(123) 456-7890',
     phoneRequired: 'Ingrese su número de teléfono.',
     phoneIncomplete: 'Ingrese un número de teléfono completo de 10 dígitos.',
-    messagePlaceholder: 'Cuéntenos sobre su documento, ubicación y horario preferido.',
     thankYou: 'Gracias. Elite Empire Notary LLC se comunicará pronto para confirmar su solicitud.',
     languageLabel: 'Cambiar idioma a inglés',
     faqEyebrow: 'Preguntas',
@@ -564,14 +588,17 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-const setFormStatus = (form, message = '', type = '') => {
+const setFormStatus = (form, messageKey = '', type = '') => {
   const status = form.querySelector('[data-form-status]');
 
   if (!status) {
     return;
   }
 
-  status.textContent = message;
+  if (form === contactForm) {
+    status.dataset.i18n = messageKey;
+  }
+  status.textContent = translations[currentLanguage][messageKey] ?? '';
   status.classList.remove('is-success', 'is-error');
 
   if (type) {
@@ -582,12 +609,18 @@ const setFormStatus = (form, message = '', type = '') => {
 const submitFormspreeForm = async (form) => {
   const submitButton = form.querySelector('button[type="submit"]');
   const originalButtonText = submitButton?.textContent;
+  const isServiceRequest = form === contactForm;
 
   setFormStatus(form);
   submitButton?.setAttribute('disabled', '');
 
   if (submitButton) {
-    submitButton.textContent = 'Sending...';
+    if (isServiceRequest) {
+      submitButton.dataset.i18n = 'requestSending';
+      submitButton.textContent = translations[currentLanguage].requestSending;
+    } else {
+      submitButton.textContent = 'Sending...';
+    }
   }
 
   try {
@@ -604,13 +637,16 @@ const submitFormspreeForm = async (form) => {
     }
 
     form.reset();
-    setFormStatus(form, translations[currentLanguage].formSuccess, 'success');
+    setFormStatus(form, isServiceRequest ? 'requestSuccess' : 'formSuccess', 'success');
   } catch (error) {
-    setFormStatus(form, translations[currentLanguage].formError, 'error');
+    setFormStatus(form, isServiceRequest ? 'requestError' : 'formError', 'error');
   } finally {
     submitButton?.removeAttribute('disabled');
 
-    if (submitButton && originalButtonText) {
+    if (isServiceRequest && submitButton) {
+      submitButton.dataset.i18n = 'formSubmit';
+      submitButton.textContent = translations[currentLanguage].formSubmit;
+    } else if (submitButton && originalButtonText) {
       submitButton.textContent = originalButtonText;
     }
   }

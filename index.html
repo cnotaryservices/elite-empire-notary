@@ -30,7 +30,7 @@
         <a href="#services" data-i18n="navServices">Services</a>
         <a href="#why" data-i18n="navWhy">Why Us</a>
         <a href="faq.html" data-i18n="navFAQ">Q&amp;A</a>
-        <a href="#payment" data-i18n="navPayment">Pay</a>
+        <a href="#service-request" data-i18n="requestService">Request a Service</a>
         <a href="#contact" data-i18n="navContact">Contact</a>
       </nav>
 
@@ -83,7 +83,7 @@
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#contact" data-i18n="heroCta">Book Now</a>
-            <a class="btn btn-secondary" href="#payment" data-i18n="payNow">Pay Now</a>
+            <a class="btn btn-secondary" href="#service-request" data-i18n="requestService">Request a Service</a>
           </div>
         </div>
 
@@ -350,24 +350,17 @@
       </div>
     </section>
 
-    <section id="payment" class="section">
+    <section id="invoicing" class="section">
       <div class="container split-section">
         <div>
-          <p class="eyebrow" data-i18n="paymentEyebrow">Payment</p>
-          <h2 data-i18n="paymentHeading">Secure Payment</h2>
-          <p data-i18n="paymentCopy">
-            Pay for your notary services safely and securely using PayPal or Venmo.
+          <h2 data-i18n="invoiceHeading">Simple, Secure Invoicing</h2>
+          <p data-i18n="invoiceCopy">
+            Submit your service request. We’ll confirm your service details and total, including any applicable travel fees, then email you a QuickBooks invoice with payment instructions.
           </p>
         </div>
 
-        <div class="action-panel payment-panel" aria-label="Secure PayPal and Venmo payment">
-          <script src="https://www.paypal.com/sdk/js?client-id=BAA0B7gpNz1CgEUDwEnRMwiIwih36h_Pt2c7I8Spe9tu10UPfrMV_fzjsjGPjVlR4Hz2NcgmQLH8OMPAZI&components=hosted-buttons&enable-funding=venmo&currency=USD"></script>
-          <div id="paypal-container-DPMKE2BENAFCG" class="paypal-hosted-button"></div>
-          <script>
-            paypal.HostedButtons({
-              hostedButtonId: 'DPMKE2BENAFCG',
-            }).render('#paypal-container-DPMKE2BENAFCG');
-          </script>
+        <div class="action-panel invoice-panel">
+          <a class="btn btn-primary" href="#service-request" data-i18n="requestService">Request a Service</a>
         </div>
       </div>
     </section>
@@ -376,7 +369,7 @@
       <div class="container contact-grid">
         <div>
           <p class="eyebrow" data-i18n="contactEyebrow">Contact</p>
-          <h2 data-i18n="contactHeading">Request notary service.</h2>
+          <h2 id="service-request-heading" data-i18n="contactHeading">Request notary service.</h2>
           <p data-i18n="contactCopy">
             Share a few details and Elite Empire Notary LLC will follow up to confirm timing, location, and service needs.
           </p>
@@ -397,17 +390,17 @@
           </ul>
         </div>
 
-        <form class="contact-form" action="https://formspree.io/f/mredaodr" method="POST">
+        <form id="service-request" class="contact-form" aria-labelledby="service-request-heading" aria-describedby="service-request-note" tabindex="-1" action="https://formspree.io/f/mredaodr" method="POST">
           <input type="hidden" name="_subject" value="New Notary Service Request" />
           <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="form-honey" />
 
           <div class="form-field">
-            <label for="name" data-i18n="formName">Name</label>
-            <input id="name" name="name" type="text" autocomplete="name" data-i18n-placeholder="namePlaceholder" placeholder="Your name" required />
+            <label for="name" data-i18n="formFullName">Full Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" data-i18n-placeholder="namePlaceholder" placeholder="Your full name" required />
           </div>
 
           <div class="form-field">
-            <label for="email" data-i18n="formEmail">Email</label>
+            <label for="email" data-i18n="formEmailAddress">Email Address</label>
             <input id="email" name="email" type="email" autocomplete="email" data-i18n-placeholder="emailPlaceholder" placeholder="you@example.com" required />
           </div>
 
@@ -420,21 +413,31 @@
             <label for="service" data-i18n="formService">Service Needed</label>
             <select id="service" name="service" required>
               <option value="" data-i18n="serviceOptionDefault">Select a service</option>
-              <option value="general-notary">General Notary Services</option>
-              <option value="mobile-notary">Mobile Notary Services</option>
-              <option value="real-estate-loan-signing">Real Estate &amp; Loan Signing Services</option>
-              <option value="legal-estate-planning">Legal &amp; Estate Planning Documents</option>
-              <option value="business-financial">Business &amp; Financial Documents</option>
-              <option value="family-personal">Family &amp; Personal Documents</option>
-              <option value="apostille-authentication">Apostille &amp; Authentication Services</option>
-              <option value="specialty-premium">Specialty / Premium Services</option>
+              <option value="general-notary" data-i18n="serviceGeneral">General Notary Services</option>
+              <option value="mobile-notary" data-i18n="serviceMobile">Mobile Notary Services</option>
+              <option value="real-estate-loan-signing" data-i18n="serviceRealEstate">Real Estate &amp; Loan Signing Services</option>
+              <option value="legal-estate-planning" data-i18n="serviceLegal">Legal &amp; Estate Planning Documents</option>
+              <option value="business-financial" data-i18n="serviceBusiness">Business &amp; Financial Documents</option>
+              <option value="family-personal" data-i18n="serviceFamily">Family &amp; Personal Documents</option>
+              <option value="apostille-authentication" data-i18n="serviceApostille">Apostille &amp; Authentication Services</option>
+              <option value="specialty-premium" data-i18n="serviceSpecialty">Specialty / Premium Services</option>
               <option value="other" data-i18n="serviceOther">Other</option>
             </select>
           </div>
 
           <div class="form-field">
-            <label for="message" data-i18n="formMessage">Message</label>
-            <textarea id="message" name="message" rows="5" data-i18n-placeholder="messagePlaceholder" placeholder="Tell us about your document, location, and preferred appointment time." required></textarea>
+            <label for="preferred-appointment" data-i18n="formPreferredAppointment">Preferred Appointment Date and Time (subject to confirmation)</label>
+            <input id="preferred-appointment" name="preferred_appointment" type="datetime-local" required />
+          </div>
+
+          <div class="form-field">
+            <label for="service-location" data-i18n="formLocation">Service Location or City</label>
+            <input id="service-location" name="service_location" type="text" required />
+          </div>
+
+          <div class="form-field">
+            <label for="message" data-i18n="formMessage">Additional Details (optional)</label>
+            <textarea id="message" name="message" rows="5"></textarea>
           </div>
 
           <label class="consent-field" for="policy-consent">
@@ -442,9 +445,9 @@
             <span data-i18n="policyConsent">By submitting this form, you agree to be contacted by Elite Empire Notary regarding your request.</span>
           </label>
 
-          <button class="btn btn-primary btn-full" type="submit" data-i18n="formSubmit">Send Message</button>
+          <button class="btn btn-primary btn-full" type="submit" data-i18n="formSubmit">Submit Service Request</button>
           <p class="form-status" data-form-status role="status" aria-live="polite"></p>
-          <p class="form-note" data-i18n="formNote">Your request will be sent securely by email.</p>
+          <p id="service-request-note" class="form-note" data-i18n="formNote">Submitting a request does not confirm an appointment. Service details, pricing, and availability will be confirmed before an invoice is sent.</p>
         </form>
       </div>
     </section>
